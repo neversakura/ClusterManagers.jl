@@ -1,13 +1,6 @@
 # based on https://github.com/PySlurm/pyslurm/blob/master/.travis.yml
 sudo: required
 language: julia
-os:
-  - linux
-julia:
-  - 1.4
-  - nightly
-notifications:
-  email: false
 env:
   - SLURM=19.05.0
 
