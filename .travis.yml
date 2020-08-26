@@ -16,4 +16,5 @@ jobs:
       before_script:
         - docker exec slurm-$SLURM /julia/bin/julia --project=/ClusterManagers -e 'using Pkg; Pkg.build(verbose=true)'
       script:
-        - docker exec slurm-$SLURM /julia/bin/julia --project=/ClusterManagers -e 'using Pkg; Pkg.test()'
+        - docker exec slurm-$SLURM /ClusterManagers/test/slurm/runtests.sh
+        - /julia/bin/julia --project=/ClusterManagers -e 'using Pkg; Pkg.test()'
