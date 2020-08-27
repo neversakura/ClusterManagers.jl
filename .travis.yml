@@ -11,7 +11,7 @@ before_install:
   - docker run -d -it -h ernie -v $PWD:/ClusterManagers -v $TRAVIS_HOME/julia:/julia --name slurm-$SLURM giovtorres/docker-centos7-slurm:$SLURM
 install: true
 before_script:
-  - docker exec slurm-$SLURM /ClusterManagers/test/slurm/configure.sh
+  - docker exec slurm-$SLURM bash /ClusterManagers/test/slurm/configure.sh
   - docker exec slurm-$SLURM /julia/bin/julia --project=/ClusterManagers -e 'using Pkg; Pkg.build(verbose=true)'
 script:
   - docker exec slurm-$SLURM sbatch /ClusterManagers/test/slurm/simple_test.slurm
